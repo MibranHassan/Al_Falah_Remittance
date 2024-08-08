@@ -125,11 +125,12 @@ public class Steps {
                 T_locator.Applicant_item, T_locator.Applicant_Div,
                 T_locator.Applicant_Address1,T_locator.Applicant_Address2,T_locator.Applicant_Address3,
                 T_locator.Country_Lov, T_locator.Country_Item, T_locator.Country_Searched_Item,
-                T_locator.Product_type,T_locator.Product,T_locator.Expiry_date,T_locator.selected_product_click,
-                T_locator.select_Expiry_date, T_locator.place_of_expiry, T_locator.beneName,
+                T_locator.Product_type,T_locator.Product,T_locator.selected_product_click,T_locator.Expiry_date,
+                T_locator.select_Expiry_date, T_locator.Expiry_date_element, T_locator.place_of_expiry, T_locator.beneName,
         T_locator.bene_Address1,T_locator.bene_Address2,T_locator.bene_Address3,
                 T_locator.bene_Country_Lov, T_locator.bene_Country_Item, T_locator.bene_Country_Searched_Item,
-                T_locator.CA_bankAddress_details);
+                T_locator.CA_bankAddress_details, T_locator.Next_Button, T_locator.partialShipment_1,T_locator.partialShipment_2,
+                T_locator.partialShipment_3,T_locator.partialShipment_4,T_locator.CreditAvailedBy_Box,T_locator.CreditAvailedBy_list);
     }
     @And("Fill Goods and Shipment Details")
     public void fill_goods_and_shipment_details() {

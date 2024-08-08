@@ -177,59 +177,65 @@ public class DOMMethods {
             btn_createLC.click();
         }
     }
-    public void Fill_LC_Details(String Applicant_Account_forCharges, String Applicant_Acc_Searchbox
-    ,String Applicant_Acc_Searchbox_itemSearched, String Applicant_Acc_Searched_item,String Applicant_Acc_Select_Branch,
+    public void Fill_LC_Details(
+                                String Applicant_Account_forCharges, String Applicant_Acc_Searchbox,
+                                String Applicant_Acc_Searchbox_itemSearched, String Applicant_Acc_Searched_item
+            ,String Applicant_Acc_Select_Branch,
                                 String Applicant_Acc_Search_Branch, String Applicant_Acc_Search_Option_Enable,
                                 String Applicant_Acc_Select_Branch_item, String Applicant_item, String Applicant_Div,
                                  String Applicant_Address1, String Applicant_Address2, String Applicant_Address3,
                                 String Country_Lov, String Country_Item, String Country_Searched_Lov, String Product_type,
                                 String Product, String selected_product_click,String expiry_Date, String select_Expiry_date,
-                                String place_of_expiry, String beneName,
+                                String Expiry_date_element, String place_of_expiry, String beneName,
                                 String bene_Address1, String bene_Address2, String bene_Address3,
-                                String bene_Country_Lov, String bene_Country_Item, String bene_Country_Searched_Item,String CA_bankAddress_details) throws IOException {
+                                String bene_Country_Lov, String bene_Country_Item, String bene_Country_Searched_Item,String CA_bankAddress_details,
+                                String Next_Button_First_Tab, String partialShipment_1, String partialShipment_2,
+                                 String partialShipment_3, String partialShipment_4,String CreditAvailedBy_Box, String CreditAvailedBy_list) throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
        //Applicant Account For Charges
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Applicant_Account_forCharges)));
         WebElement Account_forCharges = driver.findElement(By.xpath(Applicant_Account_forCharges));
         Account_forCharges.click();
-        WebElement Search_Account_forCharges = driver.findElement(By.xpath(Applicant_Acc_Searchbox));
-        WebElement Searched_item_Account_forCharges = driver.findElement(By.xpath(Applicant_Acc_Searchbox_itemSearched));
-        try {
-            Search_Account_forCharges.sendKeys(getvaluesfromconfigfile().getProperty("Application-Account"));
-            Searched_item_Account_forCharges.click();
-            Account_forCharges.click();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        WebElement innerOptions = driver.findElement(By.xpath(Applicant_Acc_Searched_item));
+            innerOptions.click();
 
         //Please Select for Branch
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Applicant_Acc_Select_Branch)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Applicant_Acc_Select_Branch)));
         WebElement BranchLOV = driver.findElement(By.xpath(Applicant_Acc_Select_Branch));
         BranchLOV.click();
-        Actions action = new Actions(driver);
-        WebElement Enable_search_option = driver.findElement(By.xpath(Applicant_Acc_Search_Option_Enable));
-        action.moveToElement(Enable_search_option).keyDown(Keys.CONTROL).sendKeys(String.valueOf('\u0066')).perform();
-        WebElement search_Branch_itemm = driver.findElement(By.xpath(Applicant_Acc_Search_Branch));
-        WebElement Branch_item = driver.findElement(By.xpath(Applicant_Acc_Select_Branch_item));
+        WebElement Branch_item = driver.findElement(By.id(Applicant_Acc_Select_Branch_item));
         try {
-            search_Branch_itemm.clear();
-            search_Branch_itemm.sendKeys(getvaluesfromconfigfile().getProperty("LCBranch"));
-            search_Branch_itemm.sendKeys(getvaluesfromconfigfile().getProperty("LCBranch"));
-            Branch_item.click();
+            List<WebElement> options = Branch_item.findElements(By.tagName("li"));
+            for (WebElement option : options)
+            {
+                if (option.getText().equals(getvaluesfromconfigfile().getProperty("LCBranch")))
+                {
+                    option.click(); // click the desired option
+                    break;
+                }
+            }
         } catch (NoSuchWindowException e) {
         }
 
 //        Applicant
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Applicant_Div)));
-//        WebElement ApplicantLOV = driver.findElement(By.xpath(Applicant_Div));
-//        ApplicantLOV.click();
-//        WebElement Applicant_itemm = driver.findElement(By.xpath(Applicant_item));
-//        try {
-//            Applicant_itemm.click();
-//        } catch (NoSuchWindowException e) {
-//        }
-
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Applicant_Div)));
+        WebElement ApplicantLOV = driver.findElement(By.xpath(Applicant_Div));
+        ApplicantLOV.click();
+        WebElement Applicant_itemm = driver.findElement(By.xpath(Applicant_item));
+        try {
+            List<WebElement> Applicantoptions = Applicant_itemm.findElements(By.tagName("li"));
+            for (WebElement Aoption : Applicantoptions)
+            {
+                if (Aoption.getText().equals(getvaluesfromconfigfile().getProperty("Applicant")))
+                {
+                    Aoption.click(); // click the desired option
+                    break;
+                }
+            }
+        } catch (NoSuchWindowException e) {
+        }
 
         //   Address1
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Applicant_Address1)));
@@ -264,32 +270,40 @@ public class DOMMethods {
             address_element3.sendKeys(getvaluesfromconfigfile().getProperty("Address3"));
         }
 
-
         //Country
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Country_Lov)));
         WebElement A_Country_Lov = driver.findElement(By.xpath(Country_Lov));
         A_Country_Lov.click();
-        WebElement A_Country_Item = driver.findElement(By.xpath(Country_Item));
         WebElement A_Country_Searched_Item = driver.findElement(By.xpath(Country_Searched_Lov));
         try {
-            A_Country_Item.sendKeys(getvaluesfromconfigfile().getProperty("Country"));
-            A_Country_Searched_Item.click();
-            A_Country_Lov.click();
+            List<WebElement> Countryoptions = A_Country_Searched_Item.findElements(By.tagName("li"));
+            for (WebElement Coption : Countryoptions)
+            {
+                if (Coption.getText().equals(getvaluesfromconfigfile().getProperty("Country")))
+                {
+                    Coption.click(); // click the desired option
+                    break;
+                }
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
 
         //Product
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Product_type)));
         WebElement Product_typing = driver.findElement(By.xpath(Product_type));
         Product_typing.click();
-//        WebElement Product_Searched_Item = driver.findElement(By.xpath(Product));
-//        WebElement Product_Searched_Item_selected = driver.findElement(By.xpath(selected_product_click));
+        WebElement Product_Searched_Item_selected = driver.findElement(By.xpath(selected_product_click));
         try {
-            Product_typing.sendKeys(getvaluesfromconfigfile().getProperty("Product"));
-            Product_typing.click();
-//            Product_Searched_Item.click();
+            List<WebElement> Productoptions = Product_Searched_Item_selected.findElements(By.tagName("li"));
+            for (WebElement Poption : Productoptions)
+            {
+                if (Poption.getText().contains(getvaluesfromconfigfile().getProperty("Product")))
+                {
+                    Poption.click(); // click the desired option
+                    break;
+                }
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -305,18 +319,12 @@ public class DOMMethods {
         }
 
         //Expiry Date
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiry_Date)));
-//        WebElement expirydate_Element = driver.findElement(By.xpath(expiry_Date));
-//        WebElement select_expirydate_Element = driver.findElement(By.xpath(select_Expiry_date));
-//        expirydate_Element.click();
-////        try {
-//////            select_expirydate_Element.sendKeys(getvaluesfromconfigfile().getProperty("Date-of-Expiry"));
-//////            expirydate_Element.sendKeys(getvaluesfromconfigfile().getProperty("Date-of-Expiry"));
-////
-////        }
-
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("window.scrollTo(0, 1150)");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiry_Date)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(expiry_Date)));
+        WebElement expirydate_Element = driver.findElement(By.xpath(expiry_Date));
+        expirydate_Element.click();
+        expirydate_Element.sendKeys(getvaluesfromconfigfile().getProperty("Date-of-Expiry"));
+        if (getvaluesfromconfigfile().getProperty("Beneficiary-Details").contains("New")){
 
         //   59 Bene Name
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(beneName)));
@@ -362,21 +370,49 @@ public class DOMMethods {
             address_element3.sendKeys(getvaluesfromconfigfile().getProperty("Beneficiary-Address3"));
         }
 
-
         //  Bene Country
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(bene_Country_Lov)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(bene_Country_Lov)));
         WebElement bene_A_Country_Lov = driver.findElement(By.xpath(bene_Country_Lov));
         bene_A_Country_Lov.click();
-        WebElement bene_A_Country_Item = driver.findElement(By.xpath(bene_Country_Item));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(bene_Country_Searched_Item)));
         WebElement bene_A_Country_Searched_Item = driver.findElement(By.xpath(bene_Country_Searched_Item));
         try {
-            bene_A_Country_Item.sendKeys(getvaluesfromconfigfile().getProperty("Beneficiary-Country"));
-            bene_A_Country_Searched_Item.click();
-            bene_A_Country_Lov.click();
+            List<WebElement> BeneCoptions = bene_A_Country_Searched_Item.findElements(By.tagName("li"));
+            for (WebElement BCoption : BeneCoptions)
+            {
+                if (BCoption.getText().equals(getvaluesfromconfigfile().getProperty("Beneficiary-Country")))
+                {
+                    BCoption.click(); // click the desired option
+                    break;
+                }
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        }else {
 
+
+        }
+
+        // Credit Availed By
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CreditAvailedBy_Box)));
+        WebElement Credit_div = driver.findElement(By.xpath(CreditAvailedBy_Box));
+        Credit_div.click();
+        WebElement CreditAvailedBy_listElement = driver.findElement(By.xpath(CreditAvailedBy_list));
+        try {
+            List<WebElement> CreditAvailedoptions = CreditAvailedBy_listElement.findElements(By.tagName("li"));
+            for (WebElement CAoption : CreditAvailedoptions)
+            {
+                if (CAoption.getText().contains(getvaluesfromconfigfile().getProperty("Credit-Available-By")))
+                {
+                    CAoption.click(); // click the desired option
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         //   Credit Available With Bank Address
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CA_bankAddress_details)));
@@ -389,7 +425,34 @@ public class DOMMethods {
             CA_bankAddress.sendKeys(getvaluesfromconfigfile().getProperty("Credit-Available-With-Bank-Address"));
         }
 
+        //   Next Button First Tab
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Next_Button_First_Tab)));
+        WebElement Next_Button = driver.findElement(By.xpath(Next_Button_First_Tab));
+        try{
+            Next_Button.click();
+              }catch (NoSuchWindowException e){
+                  }
 
+
+//        Second Tab
+        //Partial Shipment
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(partialShipment_1)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(partialShipment_1)));
+        WebElement partialShipment_LOV = driver.findElement(By.xpath(partialShipment_1));
+        partialShipment_LOV.click();
+        WebElement partialShipment_item = driver.findElement(By.xpath(partialShipment_4));
+        try {
+            List<WebElement> partialShipmentoptions = partialShipment_item.findElements(By.tagName("li"));
+            for (WebElement PSoption : partialShipmentoptions)
+            {
+                if (PSoption.getText().contains(getvaluesfromconfigfile().getProperty("Partial-shipment")))
+                {
+                    PSoption.click(); // click the desired option
+                    break;
+                }
+            }
+        } catch (NoSuchWindowException e) {
+        }
     }
 
     //Cross Browser
