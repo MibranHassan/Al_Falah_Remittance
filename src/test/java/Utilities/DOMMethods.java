@@ -190,7 +190,8 @@ public class DOMMethods {
                                 String bene_Address1, String bene_Address2, String bene_Address3,
                                 String bene_Country_Lov, String bene_Country_Item, String bene_Country_Searched_Item,String CA_bankAddress_details,
                                 String Next_Button_First_Tab, String partialShipment_1, String partialShipment_2,
-                                 String partialShipment_3, String partialShipment_4,String CreditAvailedBy_Box, String CreditAvailedBy_list) throws IOException {
+                                 String partialShipment_3, String partialShipment_4,String CreditAvailedBy_Box, String CreditAvailedBy_list,
+    String Bene_Detail_Existing_button, String Bene_Detail_Existing_BeneName, String Bene_Detail_Existing_BeneLov) throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
        //Applicant Account For Charges
@@ -308,6 +309,13 @@ public class DOMMethods {
             throw new RuntimeException(e);
         }
 
+        //Expiry Date
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiry_Date)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(expiry_Date)));
+        WebElement expirydate_Element = driver.findElement(By.xpath(expiry_Date));
+        expirydate_Element.click();
+        expirydate_Element.sendKeys(getvaluesfromconfigfile().getProperty("Date-of-Expiry"));
+
         //Place of Expiry
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(place_of_expiry)));
         WebElement place_of_expiry_Element = driver.findElement(By.id(place_of_expiry));
@@ -318,12 +326,7 @@ public class DOMMethods {
             throw new RuntimeException(e);
         }
 
-        //Expiry Date
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiry_Date)));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(expiry_Date)));
-        WebElement expirydate_Element = driver.findElement(By.xpath(expiry_Date));
-        expirydate_Element.click();
-        expirydate_Element.sendKeys(getvaluesfromconfigfile().getProperty("Date-of-Expiry"));
+//        Bene Details Condition of New and Existing
         if (getvaluesfromconfigfile().getProperty("Beneficiary-Details").contains("New")){
 
         //   59 Bene Name
@@ -390,10 +393,32 @@ public class DOMMethods {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+//        Beneficiary Details Existing
         }else {
-
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Bene_Detail_Existing_button)));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Bene_Detail_Existing_button)));
+            WebElement Existing_button = driver.findElement(By.xpath(Bene_Detail_Existing_button));
+            Existing_button.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Bene_Detail_Existing_BeneName)));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Bene_Detail_Existing_BeneName)));
+            WebElement Existing_BeneName = driver.findElement(By.xpath(Bene_Detail_Existing_BeneName));
+            Existing_BeneName.click();
+            WebElement Existing_BeneLov = driver.findElement(By.xpath(Bene_Detail_Existing_BeneLov));
+            try {
+                List<WebElement> BDExistingoptions = Existing_BeneLov.findElements(By.tagName("li"));
+                for (WebElement BDEoption : BDExistingoptions)
+                {
+                    if (BDEoption.getText().equals(getvaluesfromconfigfile().getProperty("Existing-Beneficiary-Name-Lov")))
+                    {
+                        BDEoption.click(); // click the desired option
+                        break;
+                    }
+                }
+            } catch (NoSuchWindowException e) {
+            }
 
         }
+        //End of Bene. Details Else(Existing) Part
 
         // Credit Availed By
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CreditAvailedBy_Box)));

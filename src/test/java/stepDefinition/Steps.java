@@ -130,7 +130,8 @@ public class Steps {
         T_locator.bene_Address1,T_locator.bene_Address2,T_locator.bene_Address3,
                 T_locator.bene_Country_Lov, T_locator.bene_Country_Item, T_locator.bene_Country_Searched_Item,
                 T_locator.CA_bankAddress_details, T_locator.Next_Button, T_locator.partialShipment_1,T_locator.partialShipment_2,
-                T_locator.partialShipment_3,T_locator.partialShipment_4,T_locator.CreditAvailedBy_Box,T_locator.CreditAvailedBy_list);
+                T_locator.partialShipment_3,T_locator.partialShipment_4,T_locator.CreditAvailedBy_Box,T_locator.CreditAvailedBy_list,
+                T_locator.Bene_Detail_Existing_button, T_locator.Bene_Detail_Existing_BeneName,T_locator.Bene_Detail_Existing_BeneLov);
     }
     @And("Fill Goods and Shipment Details")
     public void fill_goods_and_shipment_details() {

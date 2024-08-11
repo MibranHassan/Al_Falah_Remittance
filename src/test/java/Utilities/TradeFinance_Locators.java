@@ -47,5 +47,8 @@ public class TradeFinance_Locators {
     public String partialShipment_4 = "//*[@id=\"oj-listbox-drop\"]";
     public String CreditAvailedBy_Box = "//*[@id=\"oj-select-choice-CreditAvailableBy4671901\"]";
     public String CreditAvailedBy_list = "//*[@id=\"oj-listbox-drop\"]";
+    public String Bene_Detail_Existing_button = "//*[@id=\"BeneficiaryDetails4922917\"]/div/span[1]";
+    public String Bene_Detail_Existing_BeneName = "//*[@id=\"ojChoiceId_BeneficiaryName4609236_selected\"]";
+    public String Bene_Detail_Existing_BeneLov = "//*[@id=\"oj-listbox-drop\"]";
 
 }
