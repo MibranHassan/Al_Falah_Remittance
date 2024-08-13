@@ -119,19 +119,29 @@ public class Steps {
     }
     @And("Fill LC Details")
     public void fill_lc_details() throws IOException {
-        domMethods.Fill_LC_Details(T_locator.Applicant_Account_forCharges,T_locator.Applicant_Acc_Searchbox,
-                T_locator.Applicant_Acc_Searchbox_itemSearched,T_locator.Applicant_Acc_searched_item,
-                T_locator.Applicant_Acc_Select_Branch, T_locator.Applicant_Acc_Search_Branch, T_locator.Applicant_Acc_Search_Option_Enable, T_locator.Applicant_Acc_Select_Branch_item,
+        domMethods.Fill_LC_Details(T_locator.Applicant_Account_forCharges,T_locator.Applicant_Acc_searched_item,
+                T_locator.Applicant_Acc_Select_Branch,T_locator.Applicant_Acc_Select_Branch_item,
                 T_locator.Applicant_item, T_locator.Applicant_Div,
                 T_locator.Applicant_Address1,T_locator.Applicant_Address2,T_locator.Applicant_Address3,
-                T_locator.Country_Lov, T_locator.Country_Item, T_locator.Country_Searched_Item,
-                T_locator.Product_type,T_locator.Product,T_locator.selected_product_click,T_locator.Expiry_date,
-                T_locator.select_Expiry_date, T_locator.Expiry_date_element, T_locator.place_of_expiry, T_locator.beneName,
-        T_locator.bene_Address1,T_locator.bene_Address2,T_locator.bene_Address3,
-                T_locator.bene_Country_Lov, T_locator.bene_Country_Item, T_locator.bene_Country_Searched_Item,
-                T_locator.CA_bankAddress_details, T_locator.Next_Button, T_locator.partialShipment_1,T_locator.partialShipment_2,
-                T_locator.partialShipment_3,T_locator.partialShipment_4,T_locator.CreditAvailedBy_Box,T_locator.CreditAvailedBy_list,
+                T_locator.Country_Lov, T_locator.Country_Searched_Item,
+                T_locator.Product_type,T_locator.selected_product_click,T_locator.Expiry_date,
+                 T_locator.place_of_expiry, T_locator.beneName, T_locator.bene_Address1,T_locator.bene_Address2,T_locator.bene_Address3,
+                T_locator.bene_Country_Lov, T_locator.bene_Country_Searched_Item,
+                T_locator.CA_bankAddress_details, T_locator.Next_Button, T_locator.CreditAvailedBy_Box,T_locator.CreditAvailedBy_list,
                 T_locator.Bene_Detail_Existing_button, T_locator.Bene_Detail_Existing_BeneName,T_locator.Bene_Detail_Existing_BeneLov);
+
+        domMethods.Fill_LC_Secondtab_Details(T_locator.partialShipment_1,T_locator.partialShipment_4,T_locator.Airport_of_Departure, T_locator.Trans_shipment_Box,
+                T_locator.Trans_shipment_Lov, T_locator.Dispatch_from, T_locator.Airport_of_Destination, T_locator.For_Transpotation,
+                T_locator.shipment_Date, T_locator.Country_Origin, T_locator.Country_Origin_Lov, T_locator.Next_Button_Second_tab);
+
+        domMethods.Fill_LC_Thirdtab_Details(T_locator.Goods_description, T_locator.Documents_description, T_locator.Additional_Conditions,
+                T_locator.Documents_Submit_date, T_locator.IncoTerms_Box, T_locator.IncoTerms_Lov, T_locator.Next_Button_Third_tab);
+
+        domMethods.Fill_LC_Fourthtab_Details(T_locator.SpecialPay_For_Bene, T_locator.SpecialPay_For_Bank, T_locator.Confirmation_Instruction_Confirm_btn,
+                T_locator.Confirmation_Instruction_MayConfirm_btn, T_locator.Confirmation_Instruction_Without_btn, T_locator.Confirmation_Instruction_Request_Confirmation_Box,
+                T_locator.Confirmation_Instruction_Request_Confirmation_Lov, T_locator.Sender_to_receiver_Info, T_locator.Charges, T_locator.Next_Button_Fourth_tab);
+
+        domMethods.Fill_LC_Fifthtab_Details(T_locator.Term_Condition, T_locator.Submit, T_locator.Review_Screen_Submit);
     }
     @And("Fill Goods and Shipment Details")
     public void fill_goods_and_shipment_details() {
