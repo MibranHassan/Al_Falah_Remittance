@@ -54,6 +54,9 @@ public class TradeFinance_Locators {
     public String IncoTerms_Box= "//*[@id=\"oj-select-choice-Incoterms7672858\"]";
     public String IncoTerms_Lov= "//*[@id=\"oj-listbox-drop\"]";
     public String Next_Button_Third_tab= "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Advising_Bank_Swift= "//*[@id=\"advBankSwiftCode|input\"]";
+    public String Advising_Bank_Swift_Verify= "//*[@id=\"tracker\"]/div/div/page-section/obdxcomponent/div/div/div[2]/div/oj-form-layout/div/div[1]/div[2]/div/div[2]/div[2]/oj-button/button/div";
+    public String Advising_Bank_NameAdd_Button= "//*[@id=\"ui-id-426|rb\"]";
     public String SpecialPay_For_Bene= "//*[@id=\"SpecialPaymentConditionsforBeneficiary75|input\"]";
     public String SpecialPay_For_Bank= "//*[@id=\"SpecialPaymentConditionsforBankOnly84|input\"]";
     public String Confirmation_Instruction_Confirm_btn= "//*[@id=\"ConfirmationInstructions83\"]/div/span[1]";

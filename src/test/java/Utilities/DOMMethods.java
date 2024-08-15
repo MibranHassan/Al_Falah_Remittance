@@ -448,7 +448,7 @@ public class DOMMethods {
 
         try {
 //                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
-            Thread.sleep(7000);
+            Thread.sleep(3000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -465,6 +465,10 @@ public void Fill_LC_Secondtab_Details(
         String Country_Origin_Lov, String Next_Button_Second_tab) throws IOException {
 
         WebDriverWait waiting = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+//        Scroll to Top so that it can find second tab selector
+    ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
+
 
     //Partial Shipment
         waiting.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(partialShipment_1)));
@@ -655,15 +659,51 @@ public void Fill_LC_Secondtab_Details(
             Next_Button_Third.click();
         } catch (NoSuchWindowException e) {
         }
+
+        try {
+//                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
+            Thread.sleep(3000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public void Fill_LC_Fourthtab_Details(
+    public void Fill_LC_Fourthtab_Details(String Advising_Bank_Swift, String Advising_Bank_Swift_Verify,String Advising_Bank_NameAdd_Button,
             String SpecialPay_For_Bene, String SpecialPay_For_Bank, String Confirmation_Instruction_Confirm_btn,
             String Confirmation_Instruction_MayConfirm_btn, String Confirmation_Instruction_Without_btn, String Confirmation_Instruction_Request_Confirmation_Box,
             String Confirmation_Instruction_Request_Confirmation_Lov, String Sender_to_receiver_Info, String Charges, String Next_Button_Fourth_tab) throws IOException {
 
         WebDriverWait waitFourth = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
+
+//        Advising Bank Swift Code
+        if (getvaluesfromconfigfile().getProperty("Advising-Bank").contains("Swift Code")) {
+            waitFourth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Advising_Bank_Swift)));
+            WebElement Advising_Bank_Swift_Item = driver.findElement(By.xpath(Advising_Bank_Swift));
+            WebElement Advising_Bank_Swift_Verify_Item = driver.findElement(By.xpath(Advising_Bank_Swift_Verify));
+            try{
+                Advising_Bank_Swift_Item.click();
+                Advising_Bank_Swift_Item.clear();
+                Advising_Bank_Swift_Item.sendKeys(getvaluesfromconfigfile().getProperty("Instructions-AdvisingBank-SwiftCode"));
+                Advising_Bank_Swift_Verify_Item.click();
+            }catch (NoSuchWindowException e){
+                Advising_Bank_Swift_Item.sendKeys(getvaluesfromconfigfile().getProperty("Instructions-AdvisingBank-SwiftCode"));
+                Advising_Bank_Swift_Verify_Item.click();
+            }
+        }else {
+            waitFourth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Advising_Bank_NameAdd_Button)));
+            WebElement Advising_Bank_NameAdd_Button_Item = driver.findElement(By.xpath(Advising_Bank_NameAdd_Button));
+            try{
+                Advising_Bank_NameAdd_Button_Item.click();
+
+            }catch (NoSuchWindowException e){
+
+            }
+        }
+
 
         //   Additional Conditions
         waitFourth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SpecialPay_For_Bene)));
@@ -766,6 +806,7 @@ public void Fill_LC_Secondtab_Details(
             Next_Button_Fourth.click();
         } catch (NoSuchWindowException e) {
         }
+
     }
 
     public void Fill_LC_Fifthtab_Details(String Term_Condition, String Submit, String Review_Screen_Submit){

@@ -137,7 +137,7 @@ public class Steps {
         domMethods.Fill_LC_Thirdtab_Details(T_locator.Goods_description, T_locator.Documents_description, T_locator.Additional_Conditions,
                 T_locator.Documents_Submit_date, T_locator.IncoTerms_Box, T_locator.IncoTerms_Lov, T_locator.Next_Button_Third_tab);
 
-        domMethods.Fill_LC_Fourthtab_Details(T_locator.SpecialPay_For_Bene, T_locator.SpecialPay_For_Bank, T_locator.Confirmation_Instruction_Confirm_btn,
+        domMethods.Fill_LC_Fourthtab_Details(T_locator.Advising_Bank_Swift,T_locator.Advising_Bank_Swift_Verify,T_locator.Advising_Bank_NameAdd_Button,T_locator.SpecialPay_For_Bene, T_locator.SpecialPay_For_Bank, T_locator.Confirmation_Instruction_Confirm_btn,
                 T_locator.Confirmation_Instruction_MayConfirm_btn, T_locator.Confirmation_Instruction_Without_btn, T_locator.Confirmation_Instruction_Request_Confirmation_Box,
                 T_locator.Confirmation_Instruction_Request_Confirmation_Lov, T_locator.Sender_to_receiver_Info, T_locator.Charges, T_locator.Next_Button_Fourth_tab);
 
