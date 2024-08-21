@@ -1,6 +1,16 @@
 package Utilities;
 
 public class TradeFinance_Locators {
+    public String First_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Second_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Third_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Fourth_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Fifth_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Sixth_Tab_TermsAndConditions = "//*[@id=\"ui-id-497|cb\"]";
+    public String Sixth_Tab_Submit_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String Review_Screen_Submit_Button = "//*[@id=\"tracker\"]/div/div/page-section/obdxcomponent/div/div/div/div/oj-form-layout/div/div[14]/div[2]/div/oj-button[1]/button/div";
+
+
     public String tradefinance_item = "//a[@alt=\"Trade Finance\"]/descendant::span[@class=\"oj-navigationlist-item-label\"]";
     public String LC_item = "//a[@alt=\"Letter Of Credit / Contract\"]/descendant::span[@class=\"oj-navigationlist-item-label\"]";
     public String import_LC = "//a[@alt=\"Import Letter of Credit / Contract\"]/descendant::span[@class=\"oj-navigationlist-item-label\"]";
