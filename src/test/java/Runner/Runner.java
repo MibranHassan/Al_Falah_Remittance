@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 //                "Features/gotoLogin.feature",
 //                "Features/Login.feature",
 //                "Features/dashboard.feature",
-                "Features/TradeFinance_LC_Import.feature"
+                "Features/Initiate_Remittance.feature"
         }, glue={"stepDefinition"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
         monochrome = true
