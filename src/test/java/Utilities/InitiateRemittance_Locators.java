@@ -1,6 +1,8 @@
 package Utilities;
 
 public class InitiateRemittance_Locators {
+    public String Visible_First_Tab_All_Fields = "//*[@id=\"currencyCode|input\"]";
+//    public String Visible_First_Tab_All_Fields = "//*[@id=\"idNumber|input\"]";
     public String First_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
     public String Beneficiary_Account_Number = "//*[@id=\"accountNumber|input\"]";
     public String Beneficiary_Account_Title = "//*[@id=\"accountTitle|input\"]";
@@ -32,11 +34,12 @@ public class InitiateRemittance_Locators {
     public String Remitting_Amount = "//*[@id=\"remittingAmount|input\"]";
     public String PS_ID = "//*[@id=\"psid|input\"]";
     public String CPR = "//*[@id=\"CPR|input\"]";
-    public String SRB_Sales_Tax_Required_Box = "//*[@id=\"oj-select-choice-SalesTaxOptions\"]";
+//    public String SRB_Sales_Tax_Required_Box = "//*[@id=\"oj-select-choice-SalesTaxOptions\"]";
+    public String SRB_Sales_Tax_Required_Box = "//*[@id=\"ojChoiceId_SalesTaxOptions\"]/div[1]";
     public String SRB_Sales_Tax_Required_list = "//*[@id=\"oj-listbox-drop\"]";
     public String Customer_Comments = "//*[@id=\"comments|input\"]";
     public String Fifth_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
-    public String Sixth_Tab_TermsAndConditions = "//*[@id=\"ui-id-497|cb\"]";
+    public String Sixth_Tab_TermsAndConditions = "//*[@id=\"AcceptTermsandConditions100\"]/div/span";
     public String Sixth_Tab_Submit_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
     public String Review_Screen_Submit_Button = "//*[@id=\"tracker\"]/div/div/page-section/obdxcomponent/div/div/div/div/oj-form-layout/div/div[14]/div[2]/div/oj-button[1]/button/div";
 

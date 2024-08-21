@@ -33,7 +33,7 @@ public class Steps {
     }
       @And("Fill Remittance Details")
     public void fill_lc_details() throws IOException {
-        domMethods.Ordering_Customer_Details(T_locator.First_Tab_Next_Button);
+        domMethods.Ordering_Customer_Details(T_locator.Visible_First_Tab_All_Fields, T_locator.First_Tab_Next_Button);
 
         domMethods.Beneficiary_Customer_Details(T_locator.Beneficiary_Account_Number, T_locator.Beneficiary_Account_Title,T_locator.Beneficiary_Address1, T_locator.Beneficiary_Address2, T_locator.Beneficiary_Address3, T_locator.Beneficiary_Identity_Document_Number, T_locator.Beneficiary_Bank_Swift_Code, T_locator.Beneficiary_Bank_Name, T_locator.Beneficiary_Bank_Country_Box, T_locator.Beneficiary_Bank_Country_Item, T_locator.Beneficiary_Branch_Address1, T_locator.Beneficiary_Branch_Address2, T_locator.Beneficiary_Branch_Address3,T_locator.Second_Tab_Next_Button);
 
@@ -43,7 +43,7 @@ public class Steps {
 
         domMethods.Remitting_Amount_Details(T_locator.Remitting_Amount, T_locator.PS_ID, T_locator.CPR, T_locator.SRB_Sales_Tax_Required_Box, T_locator.SRB_Sales_Tax_Required_list, T_locator.Customer_Comments, T_locator.Fifth_Tab_Next_Button);
         domMethods.Attachments(T_locator.Sixth_Tab_TermsAndConditions, T_locator.Sixth_Tab_Submit_Button, T_locator.Review_Screen_Submit_Button);
-    } 
+    }
 
     @And("take screenshot of Review Screen for Initiate LC")
     public void take_screenshot_of_Review_Screen_for_Initiate_LC() throws IOException {

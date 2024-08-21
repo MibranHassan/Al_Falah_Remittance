@@ -107,7 +107,6 @@ public class DOMMethods {
             Files.copy(file, new File(file_path));
         }
     }
-
     public void search_Initiate_screen(String Dashboard_SearchIcon, String Dashboard_SearchBox, String Search_Initiate_Remittance){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Dashboard_SearchIcon)));
@@ -128,16 +127,29 @@ public class DOMMethods {
         } catch (NoSuchWindowException | IOException e) {
         }
     }
-    public void Ordering_Customer_Details(String First_Tab_Next_Button) throws IOException {
+    public void Ordering_Customer_Details(String Visible_First_Tab_All_Fields, String First_Tab_Next_Button) throws IOException {
         WebDriverWait waiting = new WebDriverWait(driver, Duration.ofSeconds(50));
+        waiting.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Visible_First_Tab_All_Fields)));
+        waiting.until(ExpectedConditions.elementToBeClickable(By.xpath(Visible_First_Tab_All_Fields)));
+                try {
+//                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
+            Thread.sleep(7000);
 
-        //   Next Button First Tab
-        waiting.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(First_Tab_Next_Button)));
-        WebElement Next_Button_First = driver.findElement(By.xpath(First_Tab_Next_Button));
-        try {
-            Next_Button_First.click();
-        } catch (NoSuchWindowException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+//        WebElement Visible_First_Fields = driver.findElement(By.xpath(Visible_First_Tab_All_Fields));
+//        if (Visible_First_Fields.getText() != null){
+//            //   Next Button First Tab
+            waiting.until(ExpectedConditions.elementToBeClickable(By.xpath(First_Tab_Next_Button)));
+            WebElement Next_Button_First = driver.findElement(By.xpath(First_Tab_Next_Button));
+            try {
+                Next_Button_First.click();
+            } catch (NoSuchWindowException e) {
+            }
+//        }
+
+
     }
     public void Beneficiary_Customer_Details(String Beneficiary_Account_Number, String Beneficiary_Account_Title, String Beneficiary_Address1, String Beneficiary_Address2, String Beneficiary_Address3, String Beneficiary_Identity_Document_Number, String Beneficiary_Bank_Swift_Code, String Beneficiary_Bank_Name, String Beneficiary_Bank_Country_Box, String Beneficiary_Bank_Country_Item, String Beneficiary_Branch_Address1, String Beneficiary_Branch_Address2, String Beneficiary_Branch_Address3, String Second_Tab_Next_Button) throws IOException {
 
