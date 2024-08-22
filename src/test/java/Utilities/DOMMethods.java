@@ -27,9 +27,6 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class DOMMethods {
-
-//    baseclassdriver sgp;
-//    public WebDriver driver = sgp.getDriver();
     public WebDriver driver;
 
     public DOMMethods(WebDriver driver) {
@@ -51,9 +48,6 @@ public class DOMMethods {
             obj.load(input);
             return obj;
         }
-    }
-    public void wait_toload_page() throws IOException{
-            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
     public void click_Loginbtn(String loginbutton){
         try {
@@ -546,7 +540,6 @@ public class DOMMethods {
         WebDriverWait waitSixth = new WebDriverWait(driver, Duration.ofSeconds(50));
 
         try {
-//                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
             Thread.sleep(4000);
 
         } catch (InterruptedException e) {
@@ -682,7 +675,6 @@ public class DOMMethods {
         if (driver != null) {
             // Perform a wait before closing the browser
             try {
-//                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
                 Thread.sleep(4000);
 
             } catch (InterruptedException e) {
