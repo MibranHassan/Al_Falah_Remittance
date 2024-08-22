@@ -557,15 +557,6 @@ public class DOMMethods {
         waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(attachments_Box)));
         WebElement Upload_Files = driver.findElement(By.xpath(attachments_Box));
         Upload_Files.click();
-
-//            File uploadFile = new File("/Screenshots//Login_Screen.png");
-//            ((JavascriptExecutor)driver).executeScript("arguments[0].style.display = 'block';", Upload_Files);
-//            Upload_Files.clear();
-//            Upload_Files.sendKeys(uploadFile.getAbsolutePath());
-//            Upload_Files.sendKeys("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\Login_Screen.png");
-//            System.out.println(uploadFile.getAbsolutePath());
-            System.out.println(getvaluesfromconfigfile().getProperty("filepath1"));
-
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -581,7 +572,7 @@ public class DOMMethods {
             throw new RuntimeException(e);
         }
 
-        StringSelection filePath2 = new StringSelection("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\same doc.docx");
+        StringSelection filePath2 = new StringSelection(getvaluesfromconfigfile().getProperty("filepath2"));
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath2, null);
         uploadFileWithRobot();
         try {
@@ -590,7 +581,7 @@ public class DOMMethods {
             throw new RuntimeException(e);
         }
 
-        StringSelection filePath3 = new StringSelection("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\pdf.pdf");
+        StringSelection filePath3 = new StringSelection(getvaluesfromconfigfile().getProperty("filepath3"));
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath3, null);
         uploadFileWithRobot();
         try {
@@ -608,12 +599,12 @@ public class DOMMethods {
         }
 
         //   Submit LC
-//        waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Sixth_Tab_Submit_Button)));
-//        WebElement Submit_btn = driver.findElement(By.xpath(Sixth_Tab_Submit_Button));
-//        try {
-//            Submit_btn.click();
-//        } catch (NoSuchWindowException e) {
-//        }
+        waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Sixth_Tab_Submit_Button)));
+        WebElement Submit_btn = driver.findElement(By.xpath(Sixth_Tab_Submit_Button));
+        try {
+            Submit_btn.click();
+        } catch (NoSuchWindowException e) {
+        }
 
         //   Review Screen Submit Button
         waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Review_Screen_Submit_Button)));
