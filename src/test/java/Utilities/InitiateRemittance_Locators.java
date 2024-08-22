@@ -39,6 +39,7 @@ public class InitiateRemittance_Locators {
     public String SRB_Sales_Tax_Required_list = "//*[@id=\"oj-listbox-drop\"]";
     public String Customer_Comments = "//*[@id=\"comments|input\"]";
     public String Fifth_Tab_Next_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
+    public String attachments_Box = "//div[@class=\"oj-filepicker-dropzone\"]";
     public String Sixth_Tab_TermsAndConditions = "//*[@id=\"AcceptTermsandConditions100\"]/div/span";
     public String Sixth_Tab_Submit_Button = "//*[@id=\"tracker\"]/div/div/div/div[3]/div/div[2]/oj-button[1]/button/div";
     public String Review_Screen_Submit_Button = "//*[@id=\"tracker\"]/div/div/page-section/obdxcomponent/div/div/div/div/oj-form-layout/div/div[14]/div[2]/div/oj-button[1]/button/div";

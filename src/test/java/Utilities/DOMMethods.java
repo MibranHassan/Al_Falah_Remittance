@@ -14,6 +14,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.time.Duration;
 import java.util.List;
@@ -538,9 +541,63 @@ public class DOMMethods {
         } catch (NoSuchWindowException e) {
         }
     }
-    public void Attachments(String Sixth_Tab_TermsAndConditions, String Sixth_Tab_Submit_Button, String Review_Screen_Submit_Button){
+    public void Attachments(String attachments_Box, String Sixth_Tab_TermsAndConditions, String Sixth_Tab_Submit_Button, String Review_Screen_Submit_Button) throws AWTException, IOException {
 
         WebDriverWait waitSixth = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+        try {
+//                TimeUnit.SECONDS.sleep(5); // Adjust the delay as needed
+            Thread.sleep(4000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Upload Files
+        waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(attachments_Box)));
+        WebElement Upload_Files = driver.findElement(By.xpath(attachments_Box));
+        Upload_Files.click();
+
+//            File uploadFile = new File("/Screenshots//Login_Screen.png");
+//            ((JavascriptExecutor)driver).executeScript("arguments[0].style.display = 'block';", Upload_Files);
+//            Upload_Files.clear();
+//            Upload_Files.sendKeys(uploadFile.getAbsolutePath());
+//            Upload_Files.sendKeys("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\Login_Screen.png");
+//            System.out.println(uploadFile.getAbsolutePath());
+            System.out.println(getvaluesfromconfigfile().getProperty("filepath1"));
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            StringSelection filePath1 = new StringSelection(getvaluesfromconfigfile().getProperty("filepath1"));
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath1, null);
+            uploadFileWithRobot();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        StringSelection filePath2 = new StringSelection("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\same doc.docx");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath2, null);
+        uploadFileWithRobot();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        StringSelection filePath3 = new StringSelection("C:\\Users\\Mibran\\IdeaProjects\\Al Falah_Remittance\\Screenshots\\pdf.pdf");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath3, null);
+        uploadFileWithRobot();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         //   Terms And Conditions
         waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Sixth_Tab_TermsAndConditions)));
@@ -551,12 +608,12 @@ public class DOMMethods {
         }
 
         //   Submit LC
-        waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Sixth_Tab_Submit_Button)));
-        WebElement Submit_btn = driver.findElement(By.xpath(Sixth_Tab_Submit_Button));
-        try {
-            Submit_btn.click();
-        } catch (NoSuchWindowException e) {
-        }
+//        waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Sixth_Tab_Submit_Button)));
+//        WebElement Submit_btn = driver.findElement(By.xpath(Sixth_Tab_Submit_Button));
+//        try {
+//            Submit_btn.click();
+//        } catch (NoSuchWindowException e) {
+//        }
 
         //   Review Screen Submit Button
         waitSixth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Review_Screen_Submit_Button)));
@@ -565,6 +622,20 @@ public class DOMMethods {
             Review_Screen_Submit_btn.click();
         } catch (NoSuchWindowException e) {
         }
+    }
+
+    private void uploadFileWithRobot() throws AWTException {
+        Robot robot = new Robot();
+
+        // Press Ctrl+V to paste the file path
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+
+        // Press Enter to confirm the selection
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
     //Cross Browser

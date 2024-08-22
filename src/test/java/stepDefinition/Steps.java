@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
 import java.io.*;
 
 public class Steps {
@@ -32,7 +33,7 @@ public class Steps {
         domMethods.search_Initiate_screen(D_locator.Dashboard_SearchIcon, D_locator.Dashboard_SearchBox,D_locator.Search_Initiate_Remittance);
     }
       @And("Fill Remittance Details")
-    public void fill_lc_details() throws IOException {
+    public void fill_lc_details() throws IOException, AWTException {
         domMethods.Ordering_Customer_Details(T_locator.Visible_First_Tab_All_Fields, T_locator.First_Tab_Next_Button);
 
         domMethods.Beneficiary_Customer_Details(T_locator.Beneficiary_Account_Number, T_locator.Beneficiary_Account_Title,T_locator.Beneficiary_Address1, T_locator.Beneficiary_Address2, T_locator.Beneficiary_Address3, T_locator.Beneficiary_Identity_Document_Number, T_locator.Beneficiary_Bank_Swift_Code, T_locator.Beneficiary_Bank_Name, T_locator.Beneficiary_Bank_Country_Box, T_locator.Beneficiary_Bank_Country_Item, T_locator.Beneficiary_Branch_Address1, T_locator.Beneficiary_Branch_Address2, T_locator.Beneficiary_Branch_Address3,T_locator.Second_Tab_Next_Button);
@@ -42,7 +43,7 @@ public class Steps {
         domMethods.Intermediary_Institution_Details(T_locator.Identifier,T_locator.Bank_swift_code,T_locator.Bank_Name,T_locator.Bank_Address1, T_locator.Bank_Address2, T_locator.Bank_Address3, T_locator.Fourth_Tab_Next_Button);
 
         domMethods.Remitting_Amount_Details(T_locator.Remitting_Amount, T_locator.PS_ID, T_locator.CPR, T_locator.SRB_Sales_Tax_Required_Box, T_locator.SRB_Sales_Tax_Required_list, T_locator.Customer_Comments, T_locator.Fifth_Tab_Next_Button);
-        domMethods.Attachments(T_locator.Sixth_Tab_TermsAndConditions, T_locator.Sixth_Tab_Submit_Button, T_locator.Review_Screen_Submit_Button);
+        domMethods.Attachments(T_locator.attachments_Box, T_locator.Sixth_Tab_TermsAndConditions, T_locator.Sixth_Tab_Submit_Button, T_locator.Review_Screen_Submit_Button);
     }
 
     @And("take screenshot of Review Screen for Initiate LC")
